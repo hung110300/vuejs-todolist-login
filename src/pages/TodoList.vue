@@ -1,9 +1,17 @@
 <template>
-<div>
-    <InputTodo @addTodo="addNewTodo" />
-    <todoContainer :todos="todos" @setDone="setDone" @deleteOne="deleteOne" />
-    <button @click="logout">Log Out</button>
-</div>
+<body>
+    <div class="d-flex justify-content-center">
+        <h3>Hello <span class="current-user">{{ currentUser.name }}</span></h3>
+        <div>
+            <button class="btn" type="button" @click="logout">Log Out</button>
+        </div>
+    </div>
+    <div class="list">
+        <h3>Things to do</h3>
+        <InputTodo :currentUser="currentUser" @addTodo="addNewTodo" />
+        <todoContainer :todos="todos" @setDone="setDone" @deleteOne="deleteOne" />
+    </div>
+</body>
 </template>
 
 <script>
@@ -24,6 +32,13 @@ export default {
             currentUser: {}
         };
     },
+    created() {
+        let currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+        console.log(currentUser.userId);
+        if (!currentUser.userId) {
+            this.$router.push('/login')
+        }
+    },
     mounted() {
         let currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
         let bags = JSON.parse(localStorage.getItem("bags")) || [];
@@ -31,10 +46,12 @@ export default {
         let getBag = bags.find((bag) => {
             return bag.userId === currentUser.userId;
         })
-  console.log(currentUser);
-  console.log(getBag);
+        console.log(currentUser.name);
+
         this.currentUser = currentUser;
-        this.todos = getBag.todos;
+        if(getBag){
+            this.todos = getBag.todos;
+        }
     },
     methods: {
         //payload is input newTodo
@@ -83,7 +100,7 @@ export default {
             localStorage.setItem("bags", JSON.stringify(bags));
         },
         logout() {
-          this.$router.push("/login");
+            this.$router.push("/login");
             localStorage.removeItem("currentUser");
         }
     },
@@ -91,7 +108,38 @@ export default {
 </script>
 
 <style scoped>
-.isComplete {
-    text-decoration: black;
+body {
+    text-align: center;
+    background-color: white;
+    height: 100vh;
+}
+
+.current-user {
+    color: rgb(213, 213, 20);
+}
+
+.list h3 {
+    margin-top: 0.5rem;
+}
+
+.list {
+    display: inline-block;
+    background-color: rgba(232, 232, 20, 0.61);
+    padding: 1rem 5rem 1rem 5rem;
+    border-radius: 2rem;
+    margin-top: 3rem;
+}
+
+.btn {
+    background-color: rgb(213, 213, 20);
+    border: none;
+    color: black;
+    opacity: 1;
+    transition: 0.3s
+}
+
+.btn:hover {
+    background-color: rgba(235, 228, 35, 0.919);
+    color: black;
 }
 </style>
