@@ -49,7 +49,12 @@ export default {
     border: 1px solid rgb(174, 156, 25);
     border-radius: 1rem;
     margin-top: 1rem;
-
+    animation: 0.5s appear;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
 }
 
 .btn {

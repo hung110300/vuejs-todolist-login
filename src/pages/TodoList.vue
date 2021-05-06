@@ -1,6 +1,6 @@
 <template>
 <body>
-    <div class="d-flex justify-content-center">
+    <div class="todos d-flex justify-content-center">
         <h3>Hello <span class="current-user">{{ currentUser.name }}</span></h3>
         <div>
             <button class="btn" type="button" @click="logout">Log Out</button>
@@ -112,6 +112,15 @@ body {
     text-align: center;
     background-color: white;
     height: 100vh;
+}
+
+.todos {
+    animation: 0.5s appear;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
 }
 
 .current-user {

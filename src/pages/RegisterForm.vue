@@ -1,6 +1,6 @@
 <template>
 <body>
-    <form class="register-form">
+    <form class="register-form shadow">
         <h1>Register</h1>
         <div class="username input-group">
             <input class="form-control" type="text" placeholder="New username" v-model="userSignup.name" />
@@ -108,6 +108,12 @@ form {
     padding: 1rem 5rem 1rem 5rem;
     border-radius: 2rem;
     margin-top: 8rem;
+    animation: 0.5s appear;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
 }
 
 .register-form h1 {}
