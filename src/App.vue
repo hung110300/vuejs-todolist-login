@@ -1,7 +1,10 @@
 <template>
   <router-view />
-  <router-link class="signup" to="/login">Sign in</router-link>
-  <router-link class="signup" to="/register">Sign up</router-link>
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <router-link type="button" class="btn btn-outline-warning" to="/login"
+      >Let's make your todo lists!</router-link
+    >
+  </div>
 </template>
 
 <script>
@@ -11,5 +14,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

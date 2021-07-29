@@ -110,7 +110,7 @@ export default {
 <style scoped>
 body {
   text-align: center;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
   height: 100vh;
 }
 
