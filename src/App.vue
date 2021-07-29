@@ -1,5 +1,6 @@
 <template>
   <router-view />
+  asdasd
 </template>
 
 <script>
