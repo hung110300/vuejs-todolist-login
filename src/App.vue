@@ -1,6 +1,7 @@
 <template>
   <router-view />
-  asdasd
+  <router-link class="signup" to="/login">Sign in</router-link>
+  <router-link class="signup" to="/register">Sign up</router-link>
 </template>
 
 <script>
